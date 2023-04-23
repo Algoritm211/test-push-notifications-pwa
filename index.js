@@ -1,6 +1,6 @@
 
 const registerSW = async () => {
-  await navigator.serviceWorker.register(
+  return navigator.serviceWorker.register(
     "service-worker.js",
     {
       scope: "./",
@@ -10,7 +10,7 @@ const registerSW = async () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
 
-  await registerSW();
+  const swRegistration = await registerSW();
 
   const subscribeBtn = document.getElementById('subscribe-to-push');
 
@@ -18,7 +18,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     const grantedResult = await window.Notification.requestPermission();
 
     if (grantedResult === 'granted') {
-      const notification = new Notification('hello');
+      void swRegistration.showNotification('Hello from Alex', {
+        body: "New notification from my side",
+      })
     }
   })
 
