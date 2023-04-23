@@ -1,5 +1,10 @@
 
 const registerSW = async () => {
+  const registrations = await navigator.serviceWorker.getRegistrations()
+
+  for(let registration of registrations) {
+    await registration.unregister();
+  }
   return navigator.serviceWorker.register(
     "service-worker.js",
     {
