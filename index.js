@@ -20,7 +20,21 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (grantedResult === 'granted') {
       void swRegistration.showNotification('Hello from Alex', {
         body: "New notification from my side",
-        vibrate: [200, 100, 200, 100, 200, 100, 200],
+        tag: 'message-group-1',
+        actions: [
+          {
+            action: 'coffee-action',
+            title: 'Coffee',
+            type: 'button',
+            icon: '/images/demos/coffee-action.png',
+          },
+          {
+            action: 'doughnut-action',
+            type: 'button',
+            title: 'Doughnut',
+            icon: '/images/demos/doughnut-action.png',
+          },
+        ]
       })
     }
   })
