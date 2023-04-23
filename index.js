@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           },
         ]
       })
+      navigator.setAppBadge(777)
     }
   })
 
